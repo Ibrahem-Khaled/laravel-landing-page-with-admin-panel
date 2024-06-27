@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session(['locale' => $locale]);
+        app()->setLocale($locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 
 Route::get('/', [HomePage::class, 'index'])->name('home');
 
-
-Route::resource('sections', Sections::class);
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::resource('sections', Sections::class);
+});
 

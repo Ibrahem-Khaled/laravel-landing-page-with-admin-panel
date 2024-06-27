@@ -9,15 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Free Template by Free-Template.co" />
-    <meta name="keywords"
-        content="free bootstrap 4,
-         free bootstrap 4 template, 
-         free website templates, 
-         free html5, free template,
-          free website template, 
-          html5, css3, mobile first,
-         responsive" />
-    <meta name="author" content="Free-Template.co" />
+    <meta name="author" content="dar dajor" />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -27,7 +19,47 @@
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Cairo", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            font-variation-settings:
+                "slnt" 0;
+        }
+
+        .ftco-heading {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d4af37;
+            /* Gold color */
+        }
+
+        .ftco-subheading {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        .company-profile {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .since-1997 {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-top: 10px;
+            color: #d4af37;
+            /* Gold color */
+        }
+    </style>
 
 </head>
 
@@ -35,7 +67,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Exclusivity</a>
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('logo2.png') }}" width="100" alt="logo">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
@@ -44,30 +78,31 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#section-features" class="nav-link">Features</a></li>
-                    <li class="nav-item"><a href="#section-services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#section-pricing" class="nav-link">Pricing</a></li>
-                    <li class="nav-item"><a href="#section-about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#section-contact" class="nav-link">Contact</a></li>
+                    <!-- Language Switch Links -->
+                    <li class="nav-item"><a href="{{ route('lang.switch', 'en') }}" class="nav-link">English</a></li>
+                    <li class="nav-item"><a href="{{ route('lang.switch', 'ar') }}" class="nav-link">عربي</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- END nav -->
 
-    <section class="ftco-cover ftco-slant" style="background-image: url(images/bg_3.jpg);" id="section-home">
+    <section class="ftco-cover ftco-slant"
+        style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6oAQ1cbv7hh4RUOCIOCubwHaJQ%26pid%3DApi&f=1&ipt=eae6dfc0d9221d35074ff2a85202b010243e79492a552813159669e2b9a7e02e&ipo=images');"
+        id="section-home">
         <div class="container">
             <div class="row align-items-center justify-content-center text-center ftco-vh-100">
                 <div class="col-md-10">
-                    <h1 class="ftco-heading ftco-animate">We Love One Page Template</h1>
-                    <h2 class="h5 ftco-subheading mb-5 ftco-animate">A free template by <a
-                            href="#">Free-Template.co</a></h2>
-                    <p><a href="https://free-template.co/" target="_blank" class="btn btn-primary ftco-animate">Get
-                            Started</a></p>
+                    <img src="{{ asset('logo.png') }}" height="250" alt="logo">
+                    <h2 class="h5 ftco-subheading mb-5 ftco-animate">مكان يليق بك</h2>
+                    <h3 class="company-profile ftco-animate">COMPANY PROFILE</h3>
+                    <h4 class="since-1997 ftco-animate">SINCE 1997</h4>
                 </div>
             </div>
         </div>
     </section>
+
 
     <section class="ftco-section ftco-slant ftco-slant-light  bg-light ftco-slant ftco-slant-white" id="section-faq">
         @foreach ($sectionsNotImage as $item)

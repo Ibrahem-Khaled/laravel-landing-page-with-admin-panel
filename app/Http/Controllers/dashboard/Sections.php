@@ -17,8 +17,10 @@ class Sections extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:sections,name',
-            'description' => 'nullable|string',
+            'name_ar' => 'required|unique:sections,name_ar',
+            'description_ar' => 'nullable|string',
+            'name_en' => 'required|unique:sections,name_en',
+            'description_en' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
         ]);
 
@@ -32,15 +34,16 @@ class Sections extends Controller
 
         Section::create($data);
 
-        return redirect()->route('sections.index')
-            ->with('success', 'Section created successfully.');
+        return redirect()->route('sections.index')->with('success', 'Section created successfully.');
     }
 
     public function update(Request $request, Section $section)
     {
         $request->validate([
-            'name' => 'required|unique:sections,name,' . $section->id,
-            'description' => 'nullable|string',
+            'name_ar' => 'required|unique:sections,name_ar,' . $section->id,
+            'description_ar' => 'nullable|string',
+            'name_en' => 'required|unique:sections,name_en,' . $section->id,
+            'description_en' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
         ]);
 
@@ -57,8 +60,7 @@ class Sections extends Controller
 
         $section->update($data);
 
-        return redirect()->route('sections.index')
-            ->with('success', 'Section updated successfully.');
+        return redirect()->route('sections.index')->with('success', 'Section updated successfully.');
     }
 
     public function destroy(Section $section)
@@ -69,7 +71,6 @@ class Sections extends Controller
 
         $section->delete();
 
-        return redirect()->route('sections.index')
-            ->with('success', 'Section deleted successfully.');
+        return redirect()->route('sections.index')->with('success', 'Section deleted successfully.');
     }
 }

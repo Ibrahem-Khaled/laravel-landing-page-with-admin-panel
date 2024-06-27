@@ -9,5 +9,23 @@ class Section extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image'];
+    protected $fillable = [
+        'name_ar',
+        'description_ar',
+        'name_en',
+        'description_en',
+        'image'
+    ];
+
+    public function getNameAttribute()
+    {
+        $locale = app()->getLocale();
+        return $locale === 'ar' ? $this->name_ar : $this->name_en;
+    }
+
+    public function getDescriptionAttribute()
+    {
+        $locale = app()->getLocale();
+        return $locale === 'ar' ? $this->description_ar : $this->description_en;
+    }
 }
