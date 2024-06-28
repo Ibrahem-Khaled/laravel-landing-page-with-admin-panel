@@ -23,6 +23,7 @@ Route::get('lang/{locale}', function ($locale) {
 })->name('lang.switch');
 
 Route::get('/', [HomePage::class, 'index'])->name('home');
+Route::get('/section/{id}', [Sections::class, 'show'])->name('section');
 
 Route::group(['prefix' => 'dashboard'], function () {
     Route::resource('sections', Sections::class);

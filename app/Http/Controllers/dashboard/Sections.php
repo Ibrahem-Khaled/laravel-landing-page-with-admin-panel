@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Section;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,6 +13,14 @@ class Sections extends Controller
     {
         $sections = Section::all();
         return view('dashboard.sections', compact('sections'));
+    }
+
+    public function show($id)
+    {
+        $section = Section::find($id);
+        $branches = User::all();
+        $sectionsNotImage = Section::where('image', null)->get();
+        return view('section', compact('section', 'branches', 'sectionsNotImage'));
     }
 
     public function store(Request $request)
