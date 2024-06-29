@@ -28,6 +28,7 @@
             font-style: normal;
             font-variation-settings:
                 "slnt" 0;
+            background-color: #d0d0d0
         }
 
         .ftco-cover {
@@ -178,8 +179,8 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 @foreach ($gallarys as $item)
-                    <img src="{{ Storage::url('images/' . $item->image) }}" alt="{{ $item->name }}"
-                        class="img-fluid rounded mb-4" style="border-radius: 10px">
+                    <img src="{{ url('storage/images/' . $item->image) }}" alt="{{ $item->name }}"
+                        class="img-fluid rounded mb-4" style="border-radius: 10px;">
                 @endforeach
             </div>
         </div>
