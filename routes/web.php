@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\dashboard\GallaryController;
 use App\Http\Controllers\dashboard\Sections;
-use App\Http\Controllers\HomePage;
+use App\Http\Controllers\dashboard\UsersController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +24,20 @@ Route::get('lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
-Route::get('/', [HomePage::class, 'index'])->name('home');
+Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/section/{id}', [Sections::class, 'show'])->name('section');
+Route::get('/branch/{id}', [MainController::class, 'branch'])->name('branch');
 
 Route::group(['prefix' => 'dashboard'], function () {
+    // this section for dashboard
     Route::resource('sections', Sections::class);
+
+    // this gallary for dashboard
+    Route::resource('galleries', GallaryController::class);
+
+    // this users for dashboard
+    Route::resource('users', UsersController::class);
+
+
 });
 

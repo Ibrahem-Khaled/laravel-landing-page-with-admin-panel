@@ -2,11 +2,11 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>dajor</title>
+    <title>Branch Info - Dajor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Free Template by Free-Template.co" />
-    <meta name="author" content="dar dajor" />
+    <meta name="description" content="Branch Information for Dajor" />
+    <meta name="author" content="Dajor" />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,58 +25,40 @@
             font-optical-sizing: auto;
             font-weight: normal;
             font-style: normal;
-            font-variation-settings:
-                "slnt" 0;
+            font-variation-settings: "slnt" 0;
+            background-color: #f8f9fa;
+            color: #333;
         }
 
         .ftco-cover {
             position: relative;
             overflow: hidden;
-        }
-
-        .background-blur {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.fightforsmall.com%2Fgmichaelsalon.com%2F2016%2F07%2Fbest-hair-salon-near-dl-lowry-west-86th-street-and-deweese-hair-design-in-indianapolis-g-michael-salon.jpg&f=1&nofb=1&ipt=e66b8b7cf6fa831b6d4963ebd81bfb160c807161d5ddcc4fb232bf0dd516df5d&ipo=images');
-            background-size: cover;
-            background-position: center;
-            filter: blur(8px);
-            z-index: -1;
-        }
-
-        .ftco-vh-100 {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            z-index: 1;
+            color: #fff;
+            background: linear-gradient(45deg, rgba(29, 34, 43, 0.7), rgba(0, 0, 0, 0.7)), url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.fightforsmall.com%2Fgmichaelsalon.com%2F2016%2F07%2Fbest-hair-salon-near-dl-lowry-west-86th-street-and-deweese-hair-design-in-indianapolis-g-michael-salon.jpg&f=1&nofb=1&ipt=e66b8b7cf6fa831b6d4963ebd81bfb160c807161d5ddcc4fb232bf0dd516df5d&ipo=images') no-repeat center center;
+            background-size: cover;
         }
 
-        .ftco-cover img,
         .ftco-cover h3,
         .ftco-cover h4 {
-            position: relative;
-            z-index: 2;
-            color: #fff;
+            margin: 0;
+            padding: 10px;
         }
 
         .company-profile {
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin-top: 20px;
-            color: #fff;
         }
 
         .since-1997 {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: normal;
             margin-top: 10px;
-            color: #fff;
         }
 
         .whatsapp-float {
@@ -99,31 +80,47 @@
             margin-top: 16px;
         }
 
-        .ftco-section img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
+        .ftco-section {
+            padding: 60px 0;
         }
 
-        .ftco-section .text-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        .ftco-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .ftco-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            font-size: 1rem;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #ed0f7d;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: #333;
+            border: none;
         }
     </style>
-
 </head>
 
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
 
     @include('homeLayouts.nav')
 
+    <!-- Branch Info Section -->
     <section class="ftco-cover ftco-slant" id="section-home">
-        <div class="background-blur"></div>
         <div class="container">
             <div class="row align-items-center justify-content-center text-center ftco-vh-100">
                 <div class="col-md-10">
@@ -135,60 +132,60 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-slant ftco-slant-light" id="section-services">
-        <h2 class="text-center mb-5">{{ __('messages.our_services') }}</h2>
-        <div class="container">
-            @foreach ($sectionsWithImage as $index => $item)
-                <div class="row align-items-center ftco-animate mb-5">
-                    <div class="col-md-6 {{ $index % 2 == 0 ? 'order-md-2' : '' }}">
-                        <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-6 text-container {{ $index % 2 == 0 ? 'order-md-1' : '' }}">
-                        <h3 class="h3 mb-4">{{ $item->name }}</h3>
-                        <p>{{ $item->description }}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
-
-    <div class="row w-100">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115681.29592731265!2d-77.47713270775661!3d25.0326996781907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x892f7c99b981dbc9%3A0x2aef01d3485e50d2!2sNassau%2C%20Bahamy!5e0!3m2!1spl!2spl!4v1624445118063!5m2!1spl!2spl"
-            class="w-100" height="600" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <section class="ftco-section bg-white ftco-slant ftco-slant-dark" id="section-contact">
+    <!-- Booking Section -->
+    <section class="ftco-section ftco-slant ftco-slant-light" id="section-booking">
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center heading-section ftco-animate">
-                    <h2 class="mb-4">{{ __('messages.contact_us') }}</h2>
+                    <h2>{{ __('messages.book_now') }}</h2>
                     <p>{{ __('messages.booking_prompt') }}</p>
+                    <a href="{{ $branch->booking_link }}}" class="btn btn-primary">{{ __('messages.book_now') }}</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="ftco-section bg-white ftco-slant ftco-slant-dark" id="section-map">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-12 text-center heading-section ftco-animate">
+                    <h2>{{ $branch->address }}</h2>
+                    <p>{{ $branch->description }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115681.29592731265!2d-77.47713270775661!3d25.0326996781907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x892f7c99b981dbc9%3A0x2aef01d3485e50d2!2sNassau%2C%20Bahamy!5e0!3m2!1spl!2spl!4v1624445118063!5m2!1spl!2spl"
+                        class="w-100" height="600" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="ftco-section ftco-slant ftco-slant-light" id="section-contact">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <h2>{{ __('messages.contact_us') }}</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <a href="booking.html" class="btn btn-primary py-3 px-5">{{ __('messages.book_now') }}</a>
+                    <a href="mailto:info@dajor.com" class="btn btn-primary">{{ $branch->email }}</a>
+                    <a href="tel:+1234567890" class="btn btn-secondary">{{ $branch->phone }}</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section ftco-slant ftco-slant-light" id="section-about">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                @foreach ($gallarys as $item)
-                    <img src="{{ Storage::url('images/' . $item->image) }}" alt="{{ $item->name }}"
-                        class="img-fluid rounded mb-4" style="border-radius: 10px">
-                @endforeach
             </div>
         </div>
     </section>
 
     @include('homeLayouts.footer')
 
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+    <!-- Loader -->
+    <div id="ftco-loader" class="show fullscreen">
+        <svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
                 stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
@@ -196,7 +193,7 @@
         </svg>
     </div>
 
-    <a href="https://wa.me/YOUR_NUMBER_HERE" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/{{ $branch->phone }}" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -209,7 +206,6 @@
     <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
     <script src="{{ asset('js/google-map.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 
 </body>
