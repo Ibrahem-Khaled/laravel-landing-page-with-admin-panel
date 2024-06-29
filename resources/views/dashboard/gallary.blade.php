@@ -24,7 +24,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 @if ($gallery->image)
-                                    <img src="{{ url('storage/images/' . $image->image) }}" width="100px">
+                                    <img src="{{ url('storage/images/' . $gallery->image) }}" width="100px">
                                 @endif
                             </td>
                             <td>
