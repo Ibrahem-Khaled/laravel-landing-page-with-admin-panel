@@ -24,7 +24,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 @if ($gallery->image)
-                                    <img src="{{ url('storage/images/' . $gallery->image) }}" width="100px">
+                                    <img src="{{ asset('images/' . $gallery->image) }}" alt="{{ $gallery->name }}"
+                                        class="img-fluid rounded mb-4" style="border-radius: 10px;">
                                 @endif
                             </td>
                             <td>

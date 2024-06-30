@@ -42,10 +42,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.fightforsmall.com%2Fgmichaelsalon.com%2F2016%2F07%2Fbest-hair-salon-near-dl-lowry-west-86th-street-and-deweese-hair-design-in-indianapolis-g-michael-salon.jpg&f=1&nofb=1&ipt=e66b8b7cf6fa831b6d4963ebd81bfb160c807161d5ddcc4fb232bf0dd516df5d&ipo=images');
+            background-image: url({{ asset('images/background.jpeg') }});
             background-size: cover;
             background-position: center;
-            filter: blur(8px);
             z-index: -1;
         }
 
@@ -128,9 +127,9 @@
         <div class="container">
             <div class="row align-items-center justify-content-center text-center ftco-vh-100">
                 <div class="col-md-10">
-                    <img src="{{ asset('logo.png') }}" height="250" alt="logo">
-                    <h3 class="company-profile ftco-animate">{{ __('messages.company_profile') }}</h3>
-                    <h4 class="since-1997 ftco-animate">{{ __('messages.since_1997') }}</h4>
+                    {{-- <img src="{{ asset('logo.png') }}" height="250" alt="logo"> --}}
+                    {{-- <h3 class="company-profile ftco-animate">{{ __('messages.company_profile') }}</h3>
+                    <h4 class="since-1997 ftco-animate">{{ __('messages.since_1997') }}</h4> --}}
                 </div>
             </div>
         </div>
@@ -138,6 +137,8 @@
 
     <section class="ftco-section ftco-slant ftco-slant-light" id="section-services">
         <h2 class="text-center mb-5">{{ __('messages.our_services') }}</h2>
+        <img src="{{ asset('images/ourService.jpeg') }}" alt="background" class="img-fluid rounded "
+            style="object-fit: contain">
         <div class="container">
             @foreach ($sectionsWithImage as $index => $item)
                 <div class="row align-items-center ftco-animate mb-5">
@@ -153,11 +154,11 @@
         </div>
     </section>
 
-    <div class="row w-100">
+    {{-- <div class="row w-100">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115681.29592731265!2d-77.47713270775661!3d25.0326996781907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x892f7c99b981dbc9%3A0x2aef01d3485e50d2!2sNassau%2C%20Bahamy!5e0!3m2!1spl!2spl!4v1624445118063!5m2!1spl!2spl"
             class="w-100" height="600" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    </div> --}}
 
     <section class="ftco-section bg-white ftco-slant ftco-slant-dark" id="section-contact">
         <div class="container">
@@ -179,7 +180,7 @@
         <div class="container">
             <div class="row justify-content-center mb-5">
                 @foreach ($gallarys as $item)
-                    <img src="{{ url('storage/images/' . $item->image) }}" alt="{{ $item->name }}"
+                    <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}"
                         class="img-fluid rounded mb-4" style="border-radius: 10px;">
                 @endforeach
             </div>

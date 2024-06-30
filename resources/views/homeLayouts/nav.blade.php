@@ -10,10 +10,11 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{{ route('home') }}" class="nav-link">{{ __('messages.home') }}</a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"
+                        style="color: black">{{ __('messages.home') }}</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ __('messages.branches') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -23,13 +24,13 @@
                     </div>
                 </li>
                 @foreach ($sectionsNotImage as $item)
-                    <li class="nav-item active"><a href="{{ route('section', $item->id) }}"
+                    <li class="nav-item active"><a style="color: black" href="{{ route('section', $item->id) }}"
                             class="nav-link">{{ $item->name }}</a></li>
                 @endforeach
                 <!-- Language Switch Links -->
-                <li class="nav-item"><a href="{{ route('lang.switch', 'en') }}"
+                <li class="nav-item"><a style="color: black" href="{{ route('lang.switch', 'en') }}"
                         class="nav-link">{{ __('messages.english') }}</a></li>
-                <li class="nav-item"><a href="{{ route('lang.switch', 'ar') }}"
+                <li class="nav-item"><a style="color: black" href="{{ route('lang.switch', 'ar') }}"
                         class="nav-link">{{ __('messages.arabic') }}</a></li>
             </ul>
         </div>

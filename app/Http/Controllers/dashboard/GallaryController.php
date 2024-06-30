@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\gallary;
+use App\Models\Gallary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class GallaryController extends Controller
 {
     public function index()
     {
-        $galleries = gallary::all();
+        $galleries = Gallary::all();
         return view('dashboard.gallary', compact('galleries'));
     }
 
@@ -22,11 +21,11 @@ class GallaryController extends Controller
             'image' => 'nullable|image|max:2048',
         ]);
 
-        $gallery = new gallary();
+        $gallery = new Gallary();
 
         if ($request->hasFile('image')) {
             $fileName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/images', $fileName);
+            $request->image->move(public_path('images'), $fileName);
             $gallery->image = $fileName;
         }
 
@@ -42,16 +41,16 @@ class GallaryController extends Controller
             'image' => 'nullable|image|max:2048',
         ]);
 
-        $gallery = gallary::findOrFail($id);
+        $gallery = Gallary::findOrFail($id);
 
         if ($request->hasFile('image')) {
             // Delete the old image
-            if ($gallery->image) {
-                Storage::delete('public/images/' . $gallery->image);
+            if ($gallery->image && file_exists(public_path('images/' . $gallery->image))) {
+                unlink(public_path('images/' . $gallery->image));
             }
 
             $fileName = time() . '.' . $request->image->extension();
-            $request->image->storeAs('public/images', $fileName);
+            $request->image->move(public_path('images'), $fileName);
             $gallery->image = $fileName;
         }
 
@@ -63,11 +62,11 @@ class GallaryController extends Controller
     // Remove the specified gallery from storage.
     public function destroy($id)
     {
-        $gallery = gallary::findOrFail($id);
+        $gallery = Gallary::findOrFail($id);
 
         // Delete the image file
-        if ($gallery->image) {
-            Storage::delete('public/images/' . $gallery->image);
+        if ($gallery->image && file_exists(public_path('images/' . $gallery->image))) {
+            unlink(public_path('images/' . $gallery->image));
         }
 
         $gallery->delete();
