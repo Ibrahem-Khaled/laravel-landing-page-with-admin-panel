@@ -22,6 +22,7 @@
                         <th>Address</th>
                         <th>Booking Link</th>
                         <th>Description</th>
+                        <th>Image</th>
                         <th width="280px">Action</th>
                     </tr>
                     @foreach ($users as $user)
@@ -33,6 +34,14 @@
                             <td>{{ $user->address }}</td>
                             <td>{{ $user->booking_link }}</td>
                             <td>{{ $user->description }}</td>
+                            <td>
+                                @if ($user->image)
+                                    <img src="{{ asset('images/' . $user->image) }}" alt="{{ $user->name }}"
+                                        class="img-fluid rounded mb-4" style="width: 100px; height: auto;">
+                                @else
+                                    No image
+                                @endif
+                            </td>
                             <td>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -97,6 +106,10 @@
                                                 <label for="description">Description</label>
                                                 <textarea name="description" class="form-control">{{ $user->description }}</textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="image">Image</label>
+                                                <input type="file" name="image" class="form-control">
+                                            </div>
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </form>
                                     </div>
@@ -120,7 +133,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('users.store') }}" method="POST">
+                    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -149,6 +162,10 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea name="description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" name="image" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">Add User</button>
                     </form>

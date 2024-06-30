@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('gallaries', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.

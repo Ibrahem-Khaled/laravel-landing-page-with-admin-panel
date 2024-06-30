@@ -62,6 +62,14 @@
                                             <div class="form-group">
                                                 <label for="image">Image</label>
                                                 <input type="file" name="image" class="form-control">
+                                                <select name="user_id" id="" class="form-control">
+                                                    @foreach ($users as $user)
+                                                        <option value="{{ $user->id }}"
+                                                            {{ $user->id == $gallery->user_id ? 'selected' : '' }}>
+                                                            {{ $user->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                                 @if ($gallery->image)
                                                     <img src="{{ Storage::url('images/' . $gallery->image) }}"
                                                         width="100px" class="mt-2">
@@ -95,6 +103,12 @@
                         <div class="form-group">
                             <label for="image">Image</label>
                             <input type="file" name="image" class="form-control">
+                            <select name="user_id" id="" class="form-control">
+                                @foreach ($users as $user)
+                                    <option></option>
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Add Gallery</button>
                     </form>

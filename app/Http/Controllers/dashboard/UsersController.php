@@ -21,10 +21,12 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
             'address' => 'nullable|string|max:255',
-            'phone' => 'nullable',
-            'booking_link' => 'nullable',
+            'phone' => 'nullable|string|max:15',
+            'booking_link' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         $user = new User();
@@ -35,6 +37,13 @@ class UsersController extends Controller
         $user->phone = $request->phone;
         $user->booking_link = $request->booking_link;
         $user->description = $request->description;
+
+        if ($request->hasFile('image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $fileName);
+            $user->image = $fileName;
+        }
+
         $user->save();
 
         return redirect()->back()->with('success', 'User created successfully.');
@@ -45,11 +54,13 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8',
             'address' => 'nullable|string|max:255',
-            'phone' => 'nullable',
-            'booking_link' => 'nullable',
+            'phone' => 'nullable|string|max:15',
+            'booking_link' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         $user = User::findOrFail($id);
@@ -62,6 +73,18 @@ class UsersController extends Controller
         $user->phone = $request->phone;
         $user->booking_link = $request->booking_link;
         $user->description = $request->description;
+
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if ($user->image && file_exists(public_path('images/' . $user->image))) {
+                unlink(public_path('images/' . $user->image));
+            }
+
+            $fileName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $fileName);
+            $user->image = $fileName;
+        }
+
         $user->save();
 
         return redirect()->back()->with('success', 'User updated successfully.');
@@ -71,6 +94,12 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+
+        // Delete the image file
+        if ($user->image && file_exists(public_path('images/' . $user->image))) {
+            unlink(public_path('images/' . $user->image));
+        }
+
         $user->delete();
 
         return redirect()->back()->with('success', 'User deleted successfully.');

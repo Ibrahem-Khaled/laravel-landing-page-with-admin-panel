@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\gallary as Gallary;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GallaryController extends Controller
@@ -11,7 +12,8 @@ class GallaryController extends Controller
     public function index()
     {
         $galleries = Gallary::all();
-        return view('dashboard.gallary', compact('galleries'));
+        $users = User::all();
+        return view('dashboard.gallary', compact('galleries', 'users'));
     }
 
     // Store a newly created gallery in storage.
@@ -29,6 +31,7 @@ class GallaryController extends Controller
             $gallery->image = $fileName;
         }
 
+        $gallery->user_id = $request->user_id;
         $gallery->save();
 
         return redirect()->back()->with('success', 'Gallery created successfully.');
@@ -53,7 +56,7 @@ class GallaryController extends Controller
             $request->image->move(public_path('images'), $fileName);
             $gallery->image = $fileName;
         }
-
+        $gallery->user_id = $request->user_id;
         $gallery->save();
 
         return redirect()->back()->with('success', 'Gallery updated successfully.');

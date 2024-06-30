@@ -29,6 +29,7 @@
             background-color: #d0d0d0 color: #333;
         }
 
+
         .ftco-cover {
             position: relative;
             overflow: hidden;
@@ -38,8 +39,7 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            background:
-                url('{{ asset('images/background.jpeg') }}') no-repeat center center;
+            background: url('{{ asset($branch->image ? 'images/' . $branch->image : 'images/background.jpeg') }}') no-repeat center center;
             background-size: cover;
         }
 
@@ -178,6 +178,15 @@
                     <a href="tel:+1234567890" class="btn btn-secondary">{{ $branch->phone }}</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="ftco-section bg-white ftco-slant ftco-slant-dark" id="section-map">
+        <div class="container">
+            @foreach ($gallarys as $item)
+                <img src="{{ asset('images/' . $item->image) }}" width="100%" height="350" class="rounded"
+                    style="object-fit: contain">
+            @endforeach
         </div>
     </section>
 

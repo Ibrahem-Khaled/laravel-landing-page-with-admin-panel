@@ -13,7 +13,7 @@ class MainController extends Controller
     {
         $sectionsNotImage = Section::where('image', null)->get();
         $sectionsWithImage = Section::where('image', '!=', null)->get();
-        $gallarys = gallary::all();
+        $gallarys = gallary::where('user_id', null)->get();
         $branches = User::all();
         return view('welcome', compact('sectionsNotImage', 'sectionsWithImage', 'branches', 'gallarys'));
     }
@@ -23,6 +23,7 @@ class MainController extends Controller
         $sectionsNotImage = Section::where('image', null)->get();
         $branches = User::all();
         $branch = User::find($id);
-        return view('branch', compact('sectionsNotImage', 'branches', 'branch'));
+        $gallarys = $branch->gallarys;
+        return view('branch', compact('sectionsNotImage', 'branches', 'branch', 'gallarys'));
     }
 }
