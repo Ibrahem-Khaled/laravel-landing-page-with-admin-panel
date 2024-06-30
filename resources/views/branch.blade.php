@@ -38,7 +38,7 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            background: linear-gradient(45deg, rgba(29, 34, 43, 0.7), rgba(0, 0, 0, 0.7)),
+            background:
                 url('{{ asset('images/background.jpeg') }}') no-repeat center center;
             background-size: cover;
         }
