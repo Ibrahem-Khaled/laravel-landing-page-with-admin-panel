@@ -26,8 +26,7 @@
             font-weight: normal;
             font-style: normal;
             font-variation-settings: "slnt" 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #d0d0d0 color: #333;
         }
 
         .ftco-cover {
@@ -39,7 +38,8 @@
             justify-content: center;
             text-align: center;
             color: #fff;
-            background: linear-gradient(45deg, rgba(29, 34, 43, 0.7), rgba(0, 0, 0, 0.7)), url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.fightforsmall.com%2Fgmichaelsalon.com%2F2016%2F07%2Fbest-hair-salon-near-dl-lowry-west-86th-street-and-deweese-hair-design-in-indianapolis-g-michael-salon.jpg&f=1&nofb=1&ipt=e66b8b7cf6fa831b6d4963ebd81bfb160c807161d5ddcc4fb232bf0dd516df5d&ipo=images') no-repeat center center;
+            background: linear-gradient(45deg, rgba(29, 34, 43, 0.7), rgba(0, 0, 0, 0.7)),
+                url('{{ asset('images/background.jpeg') }}') no-repeat center center;
             background-size: cover;
         }
 
@@ -124,9 +124,9 @@
         <div class="container">
             <div class="row align-items-center justify-content-center text-center ftco-vh-100">
                 <div class="col-md-10">
-                    <img src="{{ asset('logo.png') }}" height="250" alt="logo">
+                    {{-- <img src="{{ asset('logo.png') }}" height="250" alt="logo">
                     <h3 class="company-profile ftco-animate">{{ __('messages.company_profile') }}</h3>
-                    <h4 class="since-1997 ftco-animate">{{ __('messages.since_1997') }}</h4>
+                    <h4 class="since-1997 ftco-animate">{{ __('messages.since_1997') }}</h4> --}}
                 </div>
             </div>
         </div>

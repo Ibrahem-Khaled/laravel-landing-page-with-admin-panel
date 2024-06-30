@@ -27,6 +27,7 @@
             font-weight: normal;
             font-style: normal;
             font-variation-settings: "slnt" 0;
+            background-color: #d0d0d0
         }
 
         .about-section {
