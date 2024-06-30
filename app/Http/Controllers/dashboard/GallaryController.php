@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallary;
+use App\Models\gallary as Gallary;
 use Illuminate\Http\Request;
 
 class GallaryController extends Controller
