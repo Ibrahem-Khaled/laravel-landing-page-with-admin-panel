@@ -5,7 +5,7 @@
     <title>dajor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Free Template by Free-Template.co" />
+    <meta name="description" content="صالون تجميل دار ديجور" />
     <meta name="author" content="dar dajor" />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">

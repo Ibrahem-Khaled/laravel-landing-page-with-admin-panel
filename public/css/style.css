@@ -7,7 +7,7 @@ body {
   line-height: 1.8;
   font-size: 16px;
   background: #fff;
-  color: #000;
+  color: #859196;
 }
 
 a {
@@ -51,7 +51,7 @@ h5,
 
 @media screen and (max-width: 991px) {
   .ftco-navbar-light {
-    background: #000 !important;
+    background: gray !important;
     top: 0;
     position: relative;
   }
@@ -75,7 +75,7 @@ h5,
 }
 
 .ftco-navbar-light .navbar-nav>.nav-item.ftco-cta a {
-  color: #000;
+  color: #fff;
 }
 
 .ftco-navbar-light .navbar-nav>.nav-item.ftco-seperator {
@@ -98,7 +98,7 @@ h5,
   bottom: 10px;
   left: 0;
   width: 2px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 @media screen and (max-width: 960px) {
@@ -109,7 +109,7 @@ h5,
 
 .ftco-navbar-light .navbar-toggler {
   border: none;
-  color: rgba(255, 255, 255, 0) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
   cursor: pointer;
   padding-right: 0;
   text-transform: uppercase;
