@@ -12,4 +12,7 @@ return [
     'english' => 'English',
     'arabic' => 'عربي',
     'our_services' => 'Our Services',
+    'man' => 'Man',
+    'women' => 'Women',
+    'other_pages' => 'Other Pages',
 ];

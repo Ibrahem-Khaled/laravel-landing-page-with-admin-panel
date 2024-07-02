@@ -18,7 +18,7 @@ class Sections extends Controller
     public function show($id)
     {
         $section = Section::find($id);
-        $branches = User::all();
+        $branches = User::where('role', 'branch')->get();
         $sectionsNotImage = Section::where('image', null)->get();
         return view('section', compact('section', 'branches', 'sectionsNotImage'));
     }

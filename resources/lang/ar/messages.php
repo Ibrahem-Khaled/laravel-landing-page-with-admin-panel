@@ -12,4 +12,7 @@ return [
     'english' => 'English',
     'arabic' => 'عربي',
     'our_services' => 'خدماتنا',
+    'man' => 'رجل',
+    'women' => 'نساء',
+    'other_pages' => 'صفحات اخرى',
 ];

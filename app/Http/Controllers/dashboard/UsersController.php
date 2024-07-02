@@ -11,8 +11,14 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::where('role', 'branch')->get();
         return view('dashboard.users', compact('users'));
+    }
+
+    public function otherPage()
+    {
+        $users = User::where('role', 'page')->get();
+        return view('dashboard.otherPage', compact('users'));
     }
 
     // Store a newly created user in storage.
@@ -20,8 +26,7 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'email' => 'nullable|string|email|max:255|unique:users',
             'address' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:15',
             'booking_link' => 'nullable|string|max:255',
@@ -37,6 +42,7 @@ class UsersController extends Controller
         $user->phone = $request->phone;
         $user->booking_link = $request->booking_link;
         $user->description = $request->description;
+        $user->role = $request->role;
 
         if ($request->hasFile('image')) {
             $fileName = time() . '.' . $request->image->extension();
@@ -54,8 +60,7 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8',
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $id,
             'address' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:15',
             'booking_link' => 'nullable|string|max:255',
@@ -73,6 +78,7 @@ class UsersController extends Controller
         $user->phone = $request->phone;
         $user->booking_link = $request->booking_link;
         $user->description = $request->description;
+        $user->role = $request->role;
 
         if ($request->hasFile('image')) {
             // Delete the old image

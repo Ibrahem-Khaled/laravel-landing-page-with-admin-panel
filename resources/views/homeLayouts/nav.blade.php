@@ -1,3 +1,7 @@
+@php
+    $otherPages = \App\Models\User::where('role', 'page')->get();
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -19,6 +23,18 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach ($branches as $branch)
+                            <a class="dropdown-item" href="{{ route('branch', $branch->id) }}">{{ $branch->name }}</a>
+                        @endforeach
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ __('messages.other_pages') }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach ($otherPages as $branch)
                             <a class="dropdown-item" href="{{ route('branch', $branch->id) }}">{{ $branch->name }}</a>
                         @endforeach
                     </div>

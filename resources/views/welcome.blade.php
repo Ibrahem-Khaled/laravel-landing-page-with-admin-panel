@@ -2,11 +2,11 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <title>dajor</title>
+    <title>{{ $siteSetting ? $siteSetting->title : 'dar dajor' }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="صالون تجميل دار ديجور" />
-    <meta name="author" content="dar dajor" />
+    <meta name="description" content={{ $siteSetting ? $siteSetting->description : 'صالون تجميل دار ديجور' }} />
+    <meta name="author" content={{ $siteSetting ? $siteSetting->title : 'dar dajor' }} />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -42,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url({{ asset('images/background.jpeg') }});
+            background-image: url({{ asset($siteSetting ? $siteSetting->image : 'images/background.jpeg') }});
             background-size: cover;
             background-position: center;
             z-index: -1;

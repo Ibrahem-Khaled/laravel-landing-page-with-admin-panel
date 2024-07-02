@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->string('image');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->enum('status', ['woman', 'man'])->default('woman');
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
