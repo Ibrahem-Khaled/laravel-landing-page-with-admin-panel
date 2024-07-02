@@ -82,6 +82,7 @@
                                                 <label for="email">Email</label>
                                                 <input type="email" name="email" class="form-control"
                                                     value="{{ $user->email }}">
+                                                <input type="text" name="role" hidden value="branch">
                                             </div>
                                             <div class="form-group">
                                                 <label for="password">Password</label>
@@ -142,6 +143,8 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" class="form-control">
+                            <input type="text" name="role" hidden value="branch">
+
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

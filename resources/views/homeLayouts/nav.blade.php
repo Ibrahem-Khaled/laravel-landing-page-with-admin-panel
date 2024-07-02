@@ -28,7 +28,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ __('messages.other_pages') }}
@@ -38,7 +38,7 @@
                             <a class="dropdown-item" href="{{ route('branch', $branch->id) }}">{{ $branch->name }}</a>
                         @endforeach
                     </div>
-                </li>
+                </li> --}}
                 @foreach ($sectionsNotImage as $item)
                     <li class="nav-item active"><a style="color: black" href="{{ route('section', $item->id) }}"
                             class="nav-link">{{ $item->name }}</a></li>

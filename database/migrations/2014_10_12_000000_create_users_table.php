@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->text('booking_link')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->enum('role', ['branch', 'page'])->default('branch');
+            $table->enum('role', ['branch', 'page'])->default('branch')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
